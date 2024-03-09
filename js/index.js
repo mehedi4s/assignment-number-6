@@ -14,7 +14,7 @@ const displayData = (datas) => {
         const cardDiv = document.createElement('div');
         cardDiv.classList = `p-10 bg-[#F3F3F5] rounded-3xl`
         cardDiv.innerHTML = `
-        <div class="flex gap-6">
+        <div class="flex gap-6 flex-col lg:flex-row">
                             <!-- img -->
                             <div class="indicator">
                                 <span class="indicator-item badge ${data.isActive? 'bg-green-500': 'bg-red-500'} "></span> 
@@ -119,7 +119,7 @@ const latestPostDisplay = (post) => {
     post.forEach(item => {
         // console.log(item)
         const latestDiv = document.createElement('div')
-        latestDiv.classList = 'lg:flex lg:gap-7 space-y-5'
+        latestDiv.classList = 'lg:flex lg:gap-7 lg:p-0 p-4 space-y-5'
         latestDiv.innerHTML = `
                     <div class="card  bg-base-100 shadow-xl">
                         <figure class="px-10 pt-10">

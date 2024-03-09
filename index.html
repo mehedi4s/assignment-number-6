@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>assingment 6</title>
+    <!--Daisy UI and Tailwind  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="style/style.css" />
+</head>
+
+<body class="font-mulish">
+    <header class="container mx-auto">
+        <nav>
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a>Home</a></li>
+                            <li><a>Edit</a></li>
+                            <li><a>Add</a></li>
+                            <li><a>Flag</a></li>
+                        </ul>
+                    </div>
+                    <a class="btn btn-ghost text-2xl lg:text-4xl font-black">MeTro</a>
+                </div>
+                <div class="navbar-end hidden lg:flex"></div>
+                <div class="navbar-end">
+                    <ul class="menu menu-horizontal hidden lg:block space-x-3">
+                        <a class="btn rounded-full"><img title="Home" src="images/Vector (3).png" alt="" /></a>
+                        <a class="btn rounded-full"><img title="Edit" src="images/Vector (2).png" alt="" /></a>
+                        <a class="btn rounded-full"><img title="Add" src="images/Vector (1).png" alt="" /></a>
+                        <a class="btn rounded-full"><img title="Flag" src="images/Vector.png" alt="" /></a>
+                    </ul>
+                    <a class="btn ml-7 py-4 px-10 rounded-[50px] bg-[#797DFC] text-white">Sign In</a>
+                </div>
+            </div>
+        </nav>
+        <!-- banner -->
+        <div class="bg-[url(images/bgbanner.png)] w-full h-full bg-cover bg-[#12132D] rounded-3xl">
+            <div
+                class="p-4 lg:p-24 gap-3 text-white mt-16 flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                <div class="lg:w-[65%]">
+                    <h1 class="text-3xl lg:text-6xl font-black lg:leading-[86px]">
+                        Welcome to the <br /><span class="text-[#797DFC]">ReTro</span> Forum
+                    </h1>
+                    <p class="mt-5 mb-8 font-medium lg:text-xl">
+                        Share your favorite opinion and win and wp <br />
+                        forum coffee mug!
+                    </p>
+                    <!-- search result -->
+                    <div class="lg:relative">
+                        <input id="search-box" type="text" class="py-3 lg:py-5 text-black pl-5 rounded-[50px] lg:w-[60%]" placeholder="Search here anything" />
+                        <button onclick="handleSearch()"
+                            class="btn px-7 py-2 rounded-[50px] bg-[#797DFC] text-white border-none font-bold text-xl lg:absolute left-[43%] bottom-2">
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:w-[35%]">
+                    <div class="bg-white rounded-3xl p-12 space-y-4 text-black">
+                        <div class="flex justify-between">
+                            <h3>Registered Users</h3>
+                            <span>01</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <h3>Forum</h3>
+                            <span>05</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <h3>Topics</h3>
+                            <span>01</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <h3>Replies</h3>
+                            <span>01</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto">
+        <!-- Discuss section-->
+        <section class="mt-24 mb-24 p-3">
+            <div class="text-center">
+                <h1 class="text-4xl font-black mb-6">Let’s Discuss</h1>
+                <p class="text-[#12132D99]">Yes, you can run unit tests and view the results directly within the app. <br> The integrated testing features allow for a streamlined .</p>
+            </div>
+            
+             <!-- loading -->
+            <div id="loading-spinner" class="text-center mt-5 hidden">
+                <span class="loading loading-spinner text-accent loading-lg"></span>
+            </div>
+            <!-- functional design -->
+            <div class="flex flex-col mt-10 lg:flex-row gap-6">
+                <div id="display-card" class="lg:w-[65%] space-y-6">
+                    <!-- <div class="p-10 bg-[#F3F3F5] rounded-3xl">
+                        <div class="flex gap-6">
+                            
+                            <div class="indicator">
+                                <span class="indicator-item badge bg-green-500"></span> 
+                                <img class="w-[72px] h-[72px] rounded-full" src="images/people.png" alt="">
+                            </div>
+                            
+                            <div id="card-show">
+                                <div class="space-x-3 lg:space-x-6">
+                                    <span># Music</span>
+                                    <span>Author : Awlad Hossain</span>
+                                </div>
+                                <h1 class="my-4 text-xl font-bold">10 Kids Unaware of Their Halloween Costume</h1>
+                                <p>It’s one thing to subject yourself to ha Halloween costume mishap because, hey that’s your prerogative</p>
+                                <hr style="border: 1px dashed; opacity: 30%" class="my-6" />
+                                <div class="flex justify-between gap-3">
+                                    <div class="flex space-x-3 lg:space-x-7">
+                                        <h1 class="flex items-center gap-1 lg:gap-5"><img src="images/Group 13.png" alt=""><span>560</span></h1>
+                                        <h1 class="flex items-center gap-1 lg:gap-5"><img src="images/Group 16.png" alt=""><span>1,568</span></h1>
+                                        <h1 class="flex items-center gap-1 lg:gap-5"><img src="images/clock.png" alt=""><span>5 min</span></h1>
+                                    </div>
+                                    <div>
+                                        <button><img src="images/Group 40106.png" alt=""></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- dlet -->
+                    <!-- akane append korte hobe -->
+                </div>
+                <!-- click show div -->
+                <div class="w-full lg:w-[35%]">
+                    <div class="bg-[#F3F3F5] p-6 rounded-3xl">
+                        <div class="flex  justify-between mb-5">
+                            <h1>Title</h1>
+                            <h4>✅ Mark as read ( <span id="count-value">0</span> ) </h4>
+                        </div>
+                        <div id="show-title-view" class="space-y-1">
+                            <!-- <div class="bg-white rounded-2xl shadow-xl">
+                                <div class="p-4 flex">
+                                 <h1 class="w-[75%]">10 Kids Unaware of Their Halloween Costume</h1>
+                                 <h1 class="w-[25%] flex items-center gap-1 lg:gap-5"><img src="images/Group 16.png" alt=""><span>1,568</span></h1>
+                                </div> -->
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- our form -->
+        <section class="mb-24 p-1">
+            <div class="bg-[#12132D] rounded-3xl flex flex-col lg:flex-row lg:justify-between gap-8">
+                <!-- text -->
+                <div class="p-5 lg:p-24 w-full lg:w-[65%] text-white">
+                    <h1 class="text-2xl lg:text-4xl font-black mb-5">Join Our Forum</h1>
+                    <p>Share your favorite opinion and win and wp forum coffee mug! Yes, you can <br> run unit tests and view the results directly within the app.</p>
+                    <button class="btn bg-[#797DFC] border-none mt-8 px-10 text-white font-bold rounded-full">Registered Now</button>
+                </div>
+                <!-- image -->
+                <div>
+                    <img class="p-4 lg:pt-14 lg:pr-14" src="images/joinforum.png" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- section 3 -->
+        <section class="mb-24">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-black mb-6">Latest Posts</h1>
+                <p class="text-[#12132D99]">Yes, you can see your latest posts here this features is simple and beautiful design</p>
+            </div>
+            <!-- Latest Posts div -->
+            <div>
+                 <div id="latest-post" class="lg:flex lg:gap-7 space-y-5">
+                    
+                    <!-- <div class="card w-96 bg-base-100 shadow-xl">
+                        <figure class="px-10 pt-10">
+                          <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
+                        </figure>
+                        <div class="card-body">
+                            <p class="flex gap-5 mb-4 text-[#12132D99]"><img src="images/Frame.png" alt=""> 29 January 2024</p>
+                          <h2 class=" font-extrabold">What will a mars habitat force that impact in our daily life!!!</h2>
+                          <p class="text-[#12132D99]">Yes, you can run unit tests and view the results directly within the app. </p>
+                          <div class="card-actions flex gap-5 mt-4">
+                            <div>
+                                <img class="w-[44px] h-[44px] rounded-full" src="images/people.png" alt="">
+                            </div>
+                            <div>
+                                <h1>Cameron Williamson</h1>
+                                <p class="text-[#12132D99] text-[14px]">ROR Developer</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                    
+                     
+                </div> 
+            </div>
+           
+        </section>
+    </main>
+
+    <!-- footer -->
+
+    <footer class="footer footer-center p-10 bg-[#12132D0D] text-black">
+        <aside> 
+          <a class="btn btn-ghost text-2xl lg:text-4xl font-black">MeTro</a>
+          <p class="font-bold text-[#12132DB3]">
+            If you have any questions or need information, feel free to ask. Whether it's <br> about science, technology, history, or general advice, I'm here to provide concise and informative responses.
+          </p> 
+          
+        </aside> 
+        <nav>
+          <div class="grid grid-flow-col gap-7">
+            <a><img src="images/1.png" alt=""></a>
+            <a><img src="images/2.png" alt=""></a>
+            <a><img src="images/3.png" alt=""></a>
+            <a><img src="images/Vector (4).png" alt=""></a>
+          </div>
+        </nav>
+        <hr style="border: 1px dashed; color: black; opacity: 30%" class="my-6 w-[80%]" />
+        <p class="text-[#12132D80]">Copyright © 2024 - All right reserved</p>
+      </footer>
+
+
+    <script src="js/utility.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
